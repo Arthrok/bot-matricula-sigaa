@@ -1,0 +1,211 @@
+{
+    "Sobre o Scrum marque as assertivas corretas.": {
+        "options": [
+            "A equipe Scrum é formada pelo Scrum Master, Product Owner e Desenvolvedores.",
+            "Idealmente, as equipes Scrum possuem um gerente de projetos, o qual estabelece todas as atividades da equipe.",
+            "As equipes Scrum podem ter hierarquias entre os desenvolvedores.",
+            "Os valores do Scrum são: compromisso, foco, abertura, respeito e coragem."
+        ],
+        "right_answers": [
+            "Os valores do Scrum são: compromisso, foco, abertura, respeito e coragem.,",
+            "A equipe Scrum é formada pelo Scrum Master, Product Owner e Desenvolvedores."
+        ]
+    },
+    "Marque a opção que apresenta APENAS, exemplos de abordagens de desenvolvimento de software DIRIGIDAS POR PLANO.": {
+        "options": [
+            "Scrum, XP, FDD, DSDM, Crystal",
+            "Spiral, RAD, Crystal, FDD",
+            "Castaca, Spiral, RAD, Processo Unificado",
+            "Scrum, XP, FDD, SPIRAL, Crystal"
+        ],
+        "right_answers": [
+            "Castaca, Spiral, RAD, Processo Unificado"
+        ]
+    },
+    "Sobre o Scrum, marque as assertivas corretas.": {
+        "options": [
+            "O Scrum Master é responsável pelo planejamento do projeto.",
+            "O Product Owner é responsável por definir a formação da equipe Scrum.",
+            "Os desenvolvedores são responsáveis por introduzir gradualmente qualidade aderindo a uma Definition of Done.",
+            "Os desenvolvedores são responsáveis por criar um plano para a Sprint, o Sprint Backlog."
+        ],
+        "right_answers": [
+            "Os desenvolvedores são responsáveis por criar um plano para a Sprint, o Sprint Backlog.,",
+            "Os desenvolvedores são responsáveis por introduzir gradualmente qualidade aderindo a uma Definition of Done."
+        ]
+    },
+    "São valores ágeis:": {
+        "options": [
+            "Indivíduos e interações mais que processos e ferramentas.",
+            "Colaboração com o cliente mais que negociação de contratos.",
+            "Responder a mudanças mais que fazer correções.",
+            "Software em funcionamento mais que documentação abrangente.",
+            "Satisfazer o cliente mais que refatorar código.",
+            "Receber feedback do cliente mais que gerar documentação."
+        ],
+        "right_answers": [
+            "Indivíduos e interações mais que processos e ferramentas.,",
+            "Software em funcionamento mais que documentação abrangente.,",
+            "Colaboração com o cliente mais que negociação de contratos."
+        ]
+    },
+    "Sobre as questões relacionadas a fatores humanos que influenciam na escolha de uma abordagem de desenvolvimento de software dirigida por plano ou ágil.": {
+        "options": [
+            "Os representantes do  cliente estarão disponíveis e dispostos a participar do time de desenvolvimento?",
+            "Qual é o nível de competência dos projetistas e programadores do time de  desenvolvimento?",
+            "Existem questões culturais que possam afetar o desenvolvimento do sistema?",
+            "Como está organizado o time de desenvolvimento?"
+        ],
+        "right_answers": [
+            "Qual é o nível de competência dos projetistas e programadores do time de  desenvolvimento?,",
+            "Como está organizado o time de desenvolvimento?"
+        ]
+    },
+    "Sobre o XP marque as assertivas corretas.": {
+        "options": [
+            "Os padrões de codificação visam facilitar a comunicação entre a equipe, encorajar a posse coletiva, e evitar problemas na programação em pares e na refatoração.",
+            "Uma metáfora busca, entre outras coisas, estabelecer uma visão comum e vocabulário compartilhado.",
+            "São exemplos de ferramentas de integração contínua: Gitlab, Travis e Jenkins.",
+            "O ritmo sustentável trata-se da equipe estabelecer quantas horas de trabalho serão realizados, por semana, e segui-lo a partir disso. Podendo ser, 30 horas, 40 horas, 50 horas, 60 horas ou mais.",
+            "É preciso estabelecer um padrão de codificação, pois nenhuma linguagens de programação estabelece padrões e guias de estilo.",
+            "Programação em pares diz respeito a dois desenvolvedores trabalharem simultaneamente em seus computadores."
+        ],
+        "right_answers": [
+            "São exemplos de ferramentas de integração contínua: Gitlab, Travis e Jenkins.,",
+            "Uma metáfora busca, entre outras coisas, estabelecer uma visão comum e vocabulário compartilhado.,",
+            "Os padrões de codificação visam facilitar a comunicação entre a equipe, encorajar a posse coletiva, e evitar problemas na programação em pares e na refatoração."
+        ]
+    },
+    "Sobre o XP marque as assertivas corretas:": {
+        "options": [
+            "Refatorar é alterar, além da estrutura do código, o seu comportamento.",
+            "Refatorar visa alterar o design do produto e o conjunto de funcionalidades disponíveis ao cliente, por meio da realização de testes automatizados.",
+            "Identificar erros é um dos objetivos da refatoração.",
+            "Dentre os padrões de TDD, tem-se: teste seu software com testes automatizados, mantenha uma lista de testes e escreva um teste antes de escrever código de produção.",
+            "Um código é simples, quando, por exemplo: roda todos os testes e não contém código duplicado.",
+            "O design simples está presente em todas as fases do XP, sendo que, a simplicidade começa e mantém-se por meio de testes automatizados e refatoração."
+        ],
+        "right_answers": [
+            "",
+            "Um código é simples, quando, por exemplo: roda todos os testes e não contém código duplicado.,",
+            "Dentre os padrões de TDD, tem-se: teste seu software com testes automatizados, mantenha uma lista de testes e escreva um teste antes de escrever código de produção."
+        ]
+    },
+    "De acordo com o SWEBOK, Requisitos de Software:": {
+        "options": [
+            "Preocupa-se com a elicitação, análise, especificação e validação de requisitos de software, bem como com a gestão de requisitos durante todo o ciclo de vida do produto de software.",
+            "Preocupa-se apenas com a elicitação e validação de requisitos funcionais de software.",
+            "Preocupa-se com o estabelecimento técnico da solução, seus padrões de projeto, ferramentas de gerenciamento de configuração, além da validação dos requisitos não funcionais do produto de software.",
+            "Preocupa-se com o estabelecimento técnico da solução, seus padrões de projeto, ferramentas de gerenciamento de configuração e ambiente de desenvolvimento, para que seja possível a construção do produto de software."
+        ],
+        "right_answers": [
+            "Preocupa-se com a elicitação, análise, especificação e validação de requisitos de software, bem como com a gestão de requisitos durante todo o ciclo de vida do produto de software."
+        ]
+    },
+    "Sobre o ciclo de vida espiral, marque as respostas corretas.": {
+        "options": [
+            "O ciclo de vida espiral é implementado pelo processo de mesmo nome, espiral.",
+            "No ciclo de vida espiral os desenvolvedores devem estar preparados para identificar, analisar e mitigar riscos",
+            "O ciclo de vida espiral aborda os requisitos da mesma forma que os ciclos de vida, incremental e evolutivo.",
+            "O ciclo de vida espiral é indicado para projetos nos quais os requisitos não são totalmente conhecidos e as equipes não podem trabalhar em paralelo.",
+            "O ciclo de vida espiral pode ser considerado o desvio mais radical do modelo em cascata.",
+            "O ciclo de vida espiral é implementado por processos como, o processo unificado e o RAD."
+        ],
+        "right_answers": [
+            "No ciclo de vida espiral os desenvolvedores devem estar preparados para identificar, analisar e mitigar riscos,",
+            "O ciclo de vida espiral é implementado pelo processo de mesmo nome, espiral."
+        ]
+    },
+    "Sobre o ciclo de vida incremental, marque as respostas corretas.": {
+        "options": [
+            "O ciclo de vida incremental é implementado por processos como, o processo unificado.",
+            "O ciclo de vida incremental pode ser utilizado por mais de uma equipe, trabalhando em paralelo.",
+            "o ciclo de vida incremental é o modelo de ciclo de vida preferível quando os requisitos não são totalmente conhecidos no início do projeto.",
+            "O ciclo de vida incremental é similar ao sequencial e ao evolutivo, uma vez que tratam os requisitos por completo, no início do projeto.",
+            "O ciclo de vida incremental possui como principal benefício,  o controle dos riscos do projeto.",
+            "O ciclo de vida incremental propõe entregas antecipadas de partes do software que está sendo construído."
+        ],
+        "right_answers": [
+            "O ciclo de vida incremental propõe entregas antecipadas de partes do software que está sendo construído.,",
+            "O ciclo de vida incremental é implementado por processos como, o processo unificado.,",
+            "O ciclo de vida incremental pode ser utilizado por mais de uma equipe, trabalhando em paralelo."
+        ]
+    },
+    "Por que utilizar um Processo de Software?": {
+        "options": [
+            "Para cumprir com a burocracia e falta de conhecimento organizacional.",
+            "Para orientar as ações permitindo examinar, entender, controlar e aprimorar as atividades que o compõe.",
+            "Para capturar experiências e passa-las adiante.",
+            "Para padronizar as atividades e produtos, garantindo a consistência e estrutura a um conjunto de atividades.",
+            "Para construir um conjunto de artefatos independente de sua importância em relação ao processo de desenvolvimento do produto final."
+        ],
+        "right_answers": [
+            "Para orientar as ações permitindo examinar, entender, controlar e aprimorar as atividades que o compõe.,",
+            "Para capturar experiências e passa-las adiante.,",
+            "Para padronizar as atividades e produtos, garantindo a consistência e estrutura a um conjunto de atividades."
+        ]
+    },
+    "Sobre os processos de desenvolvimento, marque as respostas corretas.": {
+        "options": [
+            "A escolha de uma abordagem híbrida de desenvolvimento de software, pode ser realizada por meio da utilização de, por exemplo, práticas do XP em um ciclo de vida espiral .",
+            "A escolha de uma abordagem híbrida de desenvolvimento de software, refere-se apenas a utilização do Scrum e XP.",
+            "Em abordagens ágeis, o processo de desenvolvimento de software deve ser definido no início do projeto e, executado até o final.",
+            "Em abordagens ágeis, o processo de desenvolvimento de software deve ser definido no início do projeto e, deve ser constantemente revisado e adequado, sempre que necessário.",
+            "Em projetos de desenvolvimento de software, não faz sentido a utilização de práticas dirigidas a plano e práticas ágeis de maneira complementar, sempre que necessário."
+        ],
+        "right_answers": [
+            "Em abordagens ágeis, o processo de desenvolvimento de software deve ser definido no início do projeto e, deve ser constantemente revisado e adequado, sempre que necessário.,",
+            "A escolha de uma abordagem híbrida de desenvolvimento de software, pode ser realizada por meio da utilização de, por exemplo, práticas do XP em um ciclo de vida espiral ."
+        ]
+    },
+    "De acordo com o SWEBOK, são disciplinas de Suporte:": {
+        "options": [
+            "Gerenciamento de Configuração de Software e Engenharia de Processo.",
+            "Gerenciamento de Configuração de Software e Design de Software.",
+            "Design de Software e Engenharia de Processo.",
+            "Manutenção de Software, Requisitos de Software e Qualidade de Software.",
+            "Qualidade de Software, Teste de Software e Construção de Software.",
+            "Manutenção de Software, Gerenciamento de Engenharia e Qualidade de Software."
+        ],
+        "right_answers": [
+            "Manutenção de Software, Gerenciamento de Engenharia e Qualidade de Software.,",
+            "Gerenciamento de Configuração de Software e Engenharia de Processo."
+        ]
+    },
+    "Sobre as questões relacionadas a fatores técnicos que influenciam na escolha de uma abordagem de desenvolvimento de software dirigida por plano ou ágil.": {
+        "options": [
+            "Qual é o tamanho do sistema que está sendo desenvolvido?",
+            "Que tipo de sistema está sendo desenvolvido?",
+            "O sistema está sujeito a controle externo?",
+            "Qual é a vida útil prevista para o sistema?"
+        ],
+        "right_answers": [
+            "Qual é o tamanho do sistema que está sendo desenvolvido?,",
+            "Que tipo de sistema está sendo desenvolvido?,",
+            "Qual é a vida útil prevista para o sistema?,",
+            "O sistema está sujeito a controle externo?"
+        ]
+    },
+    "Marque a opção que apresenta APENAS, exemplos de abordagens de desenvolvimento de software ÁGIL.": {
+        "options": [
+            "Scrum, XP, FDD, DSDM, Crystal",
+            "Spiral, RAD, Crystal, FDD",
+            "Scrum, XP, FDD, SPIRAL, Crystal",
+            "Castaca, Spiral, RAD, Processo Unificado"
+        ],
+        "right_answers": [
+            "Scrum, XP, FDD, DSDM, Crystal"
+        ]
+    },
+    "De acordo com o SWEBOK, são disciplinas de engenharia:": {
+        "options": [
+            "Engenharia de Processo, Requisitos de Software, Design de Software e Construção de Software.",
+            "Requisitos de Software, Teste de Software, Engenharia de Processo e Design de Software.",
+            "Engenharia de Processo, Qualidade, Requisitos de Software e Teste de Software.",
+            "Requisitos de Software, Teste de Software, Design de Software e Construção de Software."
+        ],
+        "right_answers": [
+            "Requisitos de Software, Teste de Software, Design de Software e Construção de Software."
+        ]
+    }
+}

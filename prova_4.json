@@ -1,0 +1,142 @@
+{
+    "Sobre os tipos de teste, marque os itens corretos.": {
+        "options": [
+            "Usabilidade: verificar as interações entre os componentes de software. Funcionamento conjunto.",
+            "Suportabilidade: verifica a facilidade com a qual o software pode passar por mudanças.",
+            "Confiabilidade: testa do comportamento de todo um sistema, simulando a sua utilização real.",
+            "Funcional: avalia se a aplicação faz, de fato, o que ela é pensada para executar: requisitos funcionais e regras de negócio.",
+            "Eficiência: Verifica o funcionamento isolado dos elementos de software que são testáveis separadamente, por exemplo, partes do código."
+        ],
+        "right_answers": [
+            "Funcional: avalia se a aplicação faz, de fato, o que ela é pensada para executar: requisitos funcionais e regras de negócio.,",
+            "Suportabilidade: verifica a facilidade com a qual o software pode passar por mudanças."
+        ]
+    },
+    "Sobre os níveis de teste, marque as opções corretas.": {
+        "options": [
+            "Teste de Integração: deve verificar a comunicação entre componentes (de baixo pra cima e de cima pra baixo).",
+            "Teste de Aceitação: deve ser um dos primeiros testes a serem realizados, pois visa garantir que o cliente está em acordo com o que foi desenvolvido.",
+            "Teste de Integração: deve verificar se cada um dos componentes foi corretamente projetado, de acordo com a arquitetura e padrões estabelecidos para o projeto.",
+            "Teste de Sistema: deve verificar todo o funcionamento da solução, se atentando aos requisitos, bem como aos padrões de qualidade.",
+            "Teste Unitário: deve verificar menor unidade de código e as entradas e saídas dessa unidade. É de responsabilidade do programador."
+        ],
+        "right_answers": [
+            "Teste Unitário: deve verificar menor unidade de código e as entradas e saídas dessa unidade. É de responsabilidade do programador.,",
+            "Teste de Integração: deve verificar a comunicação entre componentes (de baixo pra cima e de cima pra baixo).",
+            "Teste de Sistema: deve verificar todo o funcionamento da solução, se atentando aos requisitos, bem como aos padrões de qualidade."
+        ]
+    },
+    "Sobre estratégia de teste, marque os itens corretos.": {
+        "options": [
+            "Os teste de integração devem estar associados a testes caixa preta e suportabilidade.",
+            "Os testes funcionais podem ser automatizados, sempre que as funcionalidades da solução já tenham adquirido certa estabilidade.",
+            "Os testes caixa branca deve ser realizados em conjunto com os testes de aceitação.",
+            "Como regra geral, deve-se estabelecer apenas um tipo de teste, um nível de teste e apenas uma técnica para todo o projeto.",
+            "Como regra geral, podem ser estabelecidos mais de um tipo de teste, mais de um nível de teste e mais uma técnica para todo o projeto.",
+            "Todos os testes funcionais devem ser automatizados.",
+            "Os testes unitários podem ser realizados apenas utilizando a técnica manual.",
+            "Os testes de confiabilidade devem ser realizados em conjunto com os testes caixa preta."
+        ],
+        "right_answers": [
+            "Como regra geral, podem ser estabelecidos mais de um tipo de teste, mais de um nível de teste e mais uma técnica para todo o projeto.,",
+            "Os testes funcionais podem ser automatizados, sempre que as funcionalidades da solução já tenham adquirido certa estabilidade."
+        ]
+    },
+    "Veja o código, a seguir, e marque a(s) resposta(s) correta(s):\n-----------------------------------------\nconst request = require('supertest');\nconst app = require('../app');\nconst mongoose = require('mongoose');\nconst User = require('../models/user');\n\ndescribe('Authentication API', () => {\n  beforeEach(async () => {\n    await User.deleteMany({});\n    const user = new User({ username: 'testuser', password: 'testpassword' });\n    await user.save();\n  });\n\n  afterEach(async () => {\n    await User.deleteMany({});\n  });\n\n  it('should return a token if the user is authenticated', async () => {\n    const res = await request(app)\n      .post('/api/auth/login')\n      .send({ username: 'testuser', password: 'testpassword' });\n    expect(res.statusCode).toBe(200);\n    expect(res.body).toHaveProperty('token');\n  });\n\n  it('should return an error if the user is not found', async () => {\n    const res = await request(app)\n      .post('/api/auth/login')\n      .send({ username: 'invaliduser', password: 'testpassword' });\n    expect(res.statusCode).toBe(401);\n    expect(res.body).toHaveProperty('error');\n  });\n\n  it('should return an error if the password is incorrect', async () => {\n    const res = await request(app)\n      .post('/api/auth/login')\n      .send({ username: 'testuser', password: 'invalidpassword' });\n    expect(res.statusCode).toBe(401);\n    expect(res.body).toHaveProperty('error');\n  });\n});\n------------------": {
+        "options": [
+            "Em, describe('Authentication API', () => { ... }, importa o modelo de usuário, que representa a coleção de usuários em nossa base de dados MongoDB.",
+            "Esse exemplo testa três cenários diferentes para a rota de autenticação de usuário:\nSe o usuário for encontrado e a senha estiver correta, deve retornar um token de autenticação.\nSe o usuário não for encontrado, deve retornar um erro.\nSe a senha for inválida, deve retornar um erro.",
+            "O código apresenta um exemplo de um teste unitário de uma rota de autenticação de usuário em uma aplicação React, Node.js e MongoDB.",
+            "Em,  it('should return an error if the user is not found', async () => { ... }, verifica o que acontece quando o usuário é encontrado."
+        ],
+        "right_answers": [
+            "O código apresenta um exemplo de um teste unitário de uma rota de autenticação de usuário em uma aplicação React, Node.js e MongoDB.,",
+            "Esse exemplo testa três cenários diferentes para a rota de autenticação de usuário:"
+        ]
+    },
+    "Quanto ao modelo de quatro quadrantes, proposto por Brian Marick, responda as assertivas corretas.": {
+        "options": [
+            "Os testes dos quadrantes Q1 e Q4 compõem os testes do pondo de vista técnico, usando termos que farão mais sentido para os programadores, mas não tanto para um especialista de domínio.",
+            "Os testes dos quadrantes Q2 e Q3 compõem os testes do pondo de vista técnico, usando termos que farão mais sentido para os programadores, mas não tanto para um especialista de domínio.",
+            "Os testes dos quadrantes Q2 e Q3 compõem os testes do pondo de vista de negócio, usando uma linguagem que faz sentido para um especialista de domínio.",
+            "Os testes dos quadrantes Q1 e Q4 compõem os testes do pondo de vista de negócio, usando uma linguagem que faz sentido para um especialista de domínio."
+        ],
+        "right_answers": [
+            "Os testes dos quadrantes Q2 e Q3 compõem os testes do pondo de vista de negócio, usando uma linguagem que faz sentido para um especialista de domínio.,",
+            "Os testes dos quadrantes Q1 e Q4 compõem os testes do pondo de vista técnico, usando termos que farão mais sentido para os programadores, mas não tanto para um especialista de domínio."
+        ]
+    },
+    "Sobre teste unitário, marque as assertivas corretas.": {
+        "options": [
+            "Quando um desenvolvedor vai construir um teste unitário, geralmente, ele deve primeiro pensar em um cenário, depois executar uma ação, e por fim, em validar se a saída está correta.",
+            "Em um teste unitário, o próprio desenvolvedor deve entrar com os dados, executar a ação e validar os resultados de forma manual.",
+            "Teste unitário é um tipo de teste realizado do ponto de vista de negócio.",
+            "Teste unitário é um tipo de teste que visa garantir a qualidade interna do produto."
+        ],
+        "right_answers": [
+            "Quando um desenvolvedor vai construir um teste unitário, geralmente, ele deve primeiro pensar em um cenário, depois executar uma ação, e por fim, em validar se a saída está correta.,",
+            "Teste unitário é um tipo de teste que visa garantir a qualidade interna do produto."
+        ]
+    },
+    "Veja o código, a seguir, e marque a(s) resposta(s) correta(s).\n--------------------------------------\nimport React from 'react';\nimport { render } from '@testing-library/react';\nimport App from './App';\n\ndescribe('App component', () => {\n  it('renders the correct text', () => {\n    const { getByText } = render(<App />);\n    const title = getByText(/Welcome to React/i);\n    expect(title).toBeInTheDocument();\n  });\n});\n----------------------------------------------": {
+        "options": [
+            "A função \"render\" é usada para renderizar o componente e a função \"getByText\" é usada para linkar o elemento no DOM.",
+            "A função \"expect\" é usada para verificar se o título está presente no documento.",
+            "O \"describe\" é uma função do framework de teste Jest que permite organizar seus testes em blocos lógicos.",
+            "Este exemplo testa o componente \"react\" e verifica se o texto \"Welcome to React\" está sendo lido corretamente."
+        ],
+        "right_answers": [
+            "A função \"expect\" é usada para verificar se o título está presente no documento.,",
+            "O \"describe\" é uma função do framework de teste Jest que permite organizar seus testes em blocos lógicos."
+        ]
+    },
+    "De acordo com o modelo de quatro quadrantes, proposto por Brian Marick, responda as assertivas corretas.": {
+        "options": [
+            "Teste unitário e teste de componentes são tipos de testes automatizados.",
+            "Testes de cenários, testes alpha / beta são tipos de testes automatizados.",
+            "Teste exploratório e teste de usabilidade são tipos de testes manuais.",
+            "Teste unitário e teste de componentes são tipos de testes que podem ser automatizados ou manuais."
+        ],
+        "right_answers": [
+            "Teste unitário e teste de componentes são tipos de testes automatizados.,",
+            "Teste exploratório e teste de usabilidade são tipos de testes manuais."
+        ]
+    },
+    "Sobre testes unitários marque as assertivas corretas.": {
+        "options": [
+            "Um teste unitário visa testar isoladamente cada unidade de código, podendo ser, por exemplo, uma função, uma classe, um método.",
+            "Um teste de unidade não se preocupa com todo o sistema. Ele está interessado apenas em saber se uma pequena parte do sistema funciona.",
+            "Um teste de unidade se preocupa com todo o sistema. Ele está interessado em saber se todo o sistema funciona em conjunto.",
+            "Um teste unitário visa testar de maneira conjunta todas as unidades de código, podendo ser, por exemplo, uma função, uma classe, um método."
+        ],
+        "right_answers": [
+            "Um teste de unidade não se preocupa com todo o sistema. Ele está interessado apenas em saber se uma pequena parte do sistema funciona.,",
+            "Um teste unitário visa testar isoladamente cada unidade de código, podendo ser, por exemplo, uma função, uma classe, um método."
+        ]
+    },
+    "Sobre a disciplina de teste de software, marque os itens corretos.": {
+        "options": [
+            "Deve ser realizada apenas para verificar se as partes do produto estão funcionando de maneira independente.",
+            "É um controle de qualidade que pode envolver etapas desde a escolha das condições em que a aplicação vai ser colocada à prova até a simulação de uso real dela e o desenvolvimento de relatórios sobre os seus resultados obtidos.",
+            "Possui o objetivo principal de garantir os requisitos não funcionais.",
+            "Seu o objetivo é verificar se o produto corresponde às funcionalidades e condições esperadas.",
+            "Deve ser realizada de maneira independente da disciplina de construção."
+        ],
+        "right_answers": [
+            "Seu o objetivo é verificar se o produto corresponde às funcionalidades e condições esperadas.,",
+            "É um controle de qualidade que pode envolver etapas desde a escolha das condições em que a aplicação vai ser colocada à prova até a simulação de uso real dela e o desenvolvimento de relatórios sobre os seus resultados obtidos."
+        ]
+    },
+    "Veja o código, a seguir, e marque a(s) reposta(s) correta(s):\n---------------------\nconst request = require('supertest');\nconst app = require('../app');\nconst mongoose = require('mongoose');\nconst User = require('../models/user');\n\ndescribe('Users API', () => {\n  beforeEach(async () => {\n    await User.deleteMany({});\n    const user = new User({ username: 'testuser', password: 'testpassword' });\n    await user.save();\n  });\n\n  afterEach(async () => {\n    await User.deleteMany({});\n  });\n\n  it('should get all users', async () => {\n    const res = await request(app)\n      .get('/api/users')\n      .send();\n    expect(res.statusCode).toBe(200);\n    expect(res.body.length).toBe(1);\n    expect(res.body[0].username).toBe('testuser');\n  });\n\n  it('should create a new user', async () => {\n    const res = await request(app)\n      .post('/api/users')\n      .send({ username: 'newuser', password: 'newpassword' });\n    expect(res.statusCode).toBe(201);\n    expect(res.body.username).toBe('newuser');\n  });\n\n  it('should return an error if the user already exists', async () => {\n    const res = await request(app)\n      .post('/api/users')\n      .send({ username: 'testuser', password: 'newpassword' });\n    expect(res.statusCode).toBe(400);\n    expect(res.body.error).toBe('User already exists');\n  });\n});\n--------------------------------------": {
+        "options": [
+            "Cada teste envia uma solicitação HTTP à API usando \"request(app)\" e verifica a resposta usando \"expect\".",
+            "A biblioteca \"supertest\" é utilizada para enviar solicitações HTTP à API e verificar as respostas.",
+            "Os blocos \"beforeEach\" e \"afterEach\" são executados para criar um usuário de teste e limpar o banco de dados, respectivamente.",
+            "Nesse código estão definidos quatro testes."
+        ],
+        "right_answers": [
+            "Cada teste envia uma solicitação HTTP à API usando \"request(app)\" e verifica a resposta usando \"expect\".,",
+            "A biblioteca \"supertest\" é utilizada para enviar solicitações HTTP à API e verificar as respostas."
+        ]
+    }
+}
