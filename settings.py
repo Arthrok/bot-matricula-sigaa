@@ -77,6 +77,28 @@ def found():
         return True
     return False
 
+def preenche_credenciais():
+    try:
+        senha = navegador.find_element(By.NAME, "j_id_jsp_334536566_1:senha")
+        senha.clear()
+        senha.send_keys(senha_usuario)
+    except:
+        pass
+
+    try:
+        dataNascimento = navegador.find_element(By.NAME, "j_id_jsp_334536566_1:Data")
+        dataNascimento.clear()
+        dataNascimento.send_keys(data)
+    except:
+        pass
+
+    try:
+        input_cpf = navegador.find_element(By.NAME, "j_id_jsp_334536566_1:cpf")
+        input_cpf.clear()
+        input_cpf.send_keys(cpf)
+    except:
+        pass
+
 def confirm():
     confirmar = navegador.find_element(By.XPATH, ".//input[@value='Confirmar Matrícula']")
     confirmar.click()
@@ -115,38 +137,25 @@ while True:
 
     time.sleep(5)
 
-def preenche_credenciais():
-    senha = navegador.find_element(By.NAME, "j_id_jsp_334536566_1:senha")
-    senha.clear()
-    senha.send_keys(senha_usuario)
+# while True:
+#     try:
+#         # dataNascimento = navegador.find_element(By.NAME, "j_id_jsp_334536566_1:Data")
+#         # input_cpf = navegador.find_element(By.NAME, "j_id_jsp_334536566_1:cpf")
+#         obrigatorio = navegador.find_elements(By.CLASS_NAME, "obrigatorio")
+#         if len(obrigatorio) == 1:
+#             senha = navegador.find_element(By.NAME, "j_id_jsp_334536566_1:senha")
+#             senha.click()
+#             senha.clear()
+#             # preencher senha
+#             senha.send_keys(senha_usuario)
+#             break
+#         else:
+#             navegador.refresh()
+#     except:
+#         navegador.refresh()   
+#     time.sleep(2)
 
-    dataNascimento = navegador.find_element(By.NAME, "j_id_jsp_334536566_1:Data")
-    dataNascimento.clear()
-    dataNascimento.send_keys(data)
-
-    input_cpf = navegador.find_element(By.NAME, "j_id_jsp_334536566_1:cpf")
-    input_cpf.clear()
-    input_cpf.send_keys(cpf)
-
-while True:
-    try:
-        # dataNascimento = navegador.find_element(By.NAME, "j_id_jsp_334536566_1:Data")
-        # input_cpf = navegador.find_element(By.NAME, "j_id_jsp_334536566_1:cpf")
-        obrigatorio = navegador.find_elements(By.CLASS_NAME, "obrigatorio")
-        if len(obrigatorio) == 1:
-            senha = navegador.find_element(By.NAME, "j_id_jsp_334536566_1:senha")
-            senha.click()
-            senha.clear()
-            # preencher senha
-            senha.send_keys(senha_usuario)
-            break
-        else:
-            navegador.refresh()
-    except:
-        navegador.refresh()   
-    time.sleep(2)
-
-# preenche_credenciais()
+preenche_credenciais()
 
 while True:
     try:
