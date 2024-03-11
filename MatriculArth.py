@@ -4,9 +4,12 @@ import subprocess
 import sys
 import time
 from tkinter import ttk
+
 import json
 
+
 matricula = {}
+
 verify = False
 
 
