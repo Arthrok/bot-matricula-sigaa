@@ -22,6 +22,7 @@ materia = sys.argv[5]
 data = sys.argv[6]
 horario = sys.argv[7]
 
+global_time = time.time()
 
 print({ matricula, email, senha_usuario, professor, materia, data, horario })
 driver = webdriver.Edge()
@@ -31,60 +32,78 @@ def alarm():
     freq = 1500  # Hz
     winsound.Beep(freq, duration)
 
-servico = Service()
-chrome_options = Options()
-chrome_options.binary_location = r"C:\Users\Arth\Downloads\chrome-win64\chrome.exe"
-
-# chrome_options.add_experimental_option( "prefs",{'profile.managed_default_content_settings.javascript': 2})
-
-current_directory = os.path.dirname(os.path.abspath(__file__))
-chromedriver_path = os.path.join(current_directory, "chromedriver.exe")
-
-
-servico = Service(ChromeDriverManager(version="114.0.5735.90").install())
 navegador = driver
 
-url = "https://sigaa.unb.br/sigaa/graduacao/matricula/extraordinaria/matricula_extraordinaria.jsf"
+url = "https://autenticacao.unb.br/sso-server/login?service=https%3A%2F%2Fsig.unb.br%2Fsigaa%2Flogin%2Fcas"
 navegador.get(url)
+
+def login():
+    input_username = navegador.find_element(By.NAME, "username")
+    input_username.send_keys(matricula)
+    input_password = navegador.find_element(By.NAME, "password")
+    input_password.send_keys(senha_usuario)
+    button_login = navegador.find_element(By.NAME, "submit")
+    button_login.click()
+
+def path_extraordinaria():
+    ensino = navegador.find_element(By.CLASS_NAME, "ThemeOfficeMainFolderText")
+    ensino.click()
+    matricula_online = navegador.find_element(By.XPATH, '//td[text()="{}"]'.format("Matrícula On-Line"))
+    matricula_online.click()
+    realizar_matricula = navegador.find_element(By.XPATH, '//td[text()="{}"]'.format("Realizar Matrícula Extraordinária"))
+    realizar_matricula.click()
+
+def search():
+    search = navegador.find_element(By.ID, "form:buscar")
+    input_horario = navegador.find_element(By.NAME, "form:txtHorario")
+    input_horario.clear()
+    input_horario.send_keys(horario)
+    input_materia = navegador.find_element(By.NAME, "form:txtCodigo")
+    input_materia.clear()
+    input_materia.send_keys(materia)
+    input_professor = navegador.find_element(By.NAME, "form:txtNomeDocente")
+    input_professor.clear()
+    input_professor.send_keys(professor)
+    search.click()
+
+def found():
+    if(navegador.find_element(By.XPATH, '//td[text()="{}"]'.format(professor))):
+        content = navegador.find_element(By.XPATH, '//td[text()="{}"]'.format(professor))
+        contentFather = content.find_element(By.XPATH, "..")
+        selecionar_turma = contentFather.find_element(By.XPATH, ".//img[@title='Selecionar turma']")
+        selecionar_turma.click()
+        alarm()
+        return True
+    return False
+
+def logout():
+    sair = navegador.find_element(By.CLASS_NAME, "sair-sistema")
+    sair.click()
+
+def check_time(minutes):
+    current_time = time.time()
+    minutes_remaining = (current_time - global_time) / 60
+    return minutes_remaining >= minutes
 
 while True:
     try:
+        if check_time(5):
+            logout()
+            global_time = time.time()
+
         if 'autenticacao' in navegador.current_url:
-            input_username = navegador.find_element(By.NAME, "username")
-            input_username.send_keys(matricula)
-            input_password = navegador.find_element(By.NAME, "password")
-            input_password.send_keys(senha_usuario)
-            button_login = navegador.find_element(By.NAME, "submit")
-            button_login.click()
-            navegador.get(url)
+            login()
 
         if ('extraordinaria' in navegador.current_url) == False:
-            navegador.get(url)
+            path_extraordinaria()
 
-        buscar = navegador.find_element(By.ID, "form:buscar")
-        input_horario = navegador.find_element(By.NAME, "form:txtHorario")
-        input_horario.clear()
-        input_horario.send_keys(horario)
-        input_materia = navegador.find_element(By.NAME, "form:txtCodigo")
-        input_materia.clear()
-        input_materia.send_keys(materia)
-        input_professor = navegador.find_element(By.NAME, "form:txtNomeDocente")
-        input_professor.clear()
-        input_professor.send_keys(professor)
-        buscar.click()
+        search()
 
-        #inserir nome do professor 
-        if(navegador.find_element(By.XPATH, '//td[text()="{}"]'.format(professor))):
-            cont = navegador.find_element(By.XPATH, '//td[text()="{}"]'.format(professor))
-            contPai = cont.find_element(By.XPATH, "..")
-            imgSelecionar = contPai.find_element(By.XPATH, ".//img[@title='Selecionar turma']")
-            if(imgSelecionar):
-               imgSelecionar.click()
-               alarm()
-               break   
-        
+        if found():
+            break
+
     except:
-        print("...")
+        print("Nenhum resultado encontrado!")
 
     time.sleep(5)
 
@@ -92,8 +111,6 @@ while True:
 
 while True:
     try:
-        janelas = navegador.window_handles
-        navegador.switch_to.window(janelas[-1])
         # dataNascimento = navegador.find_element(By.NAME, "j_id_jsp_334536566_1:Data")
         # input_cpf = navegador.find_element(By.NAME, "j_id_jsp_334536566_1:cpf")
         obrigatorio = navegador.find_elements(By.CLASS_NAME, "obrigatorio")
