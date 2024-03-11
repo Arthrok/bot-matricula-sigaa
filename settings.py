@@ -21,6 +21,7 @@ professor = sys.argv[4]
 materia = sys.argv[5]
 data = sys.argv[6]
 horario = sys.argv[7]
+cpf = sys.argv[8]
 
 global_time = time.time()
 
@@ -76,6 +77,12 @@ def found():
         return True
     return False
 
+def confirm():
+    confirmar = navegador.find_element(By.XPATH, ".//input[@value='Confirmar Matrícula']")
+    confirmar.click()
+    alert = Alert(navegador)
+    alert.accept()
+
 def logout():
     sair = navegador.find_element(By.CLASS_NAME, "sair-sistema")
     sair.click()
@@ -88,6 +95,7 @@ def check_time(minutes):
 while True:
     try:
         if check_time(5):
+            navegador.get(url)
             logout()
             global_time = time.time()
 
@@ -107,7 +115,18 @@ while True:
 
     time.sleep(5)
 
+def preenche_credenciais():
+    senha = navegador.find_element(By.NAME, "j_id_jsp_334536566_1:senha")
+    senha.clear()
+    senha.send_keys(senha_usuario)
 
+    dataNascimento = navegador.find_element(By.NAME, "j_id_jsp_334536566_1:Data")
+    dataNascimento.clear()
+    dataNascimento.send_keys(data)
+
+    input_cpf = navegador.find_element(By.NAME, "j_id_jsp_334536566_1:cpf")
+    input_cpf.clear()
+    input_cpf.send_keys(cpf)
 
 while True:
     try:
@@ -127,14 +146,11 @@ while True:
         navegador.refresh()   
     time.sleep(2)
 
+# preenche_credenciais()
+
 while True:
     try:
-        confirmar = navegador.find_element(By.XPATH, ".//input[@value='Confirmar Matrícula']")
-        confirmar.click()
-        alert = Alert(navegador)
-        alert.accept()
+        confirm()
         navegador.quit()
     except:
         print("erro")
-
-navegador.quit()

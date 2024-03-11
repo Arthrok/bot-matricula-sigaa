@@ -1,1 +1,10 @@
+# Ignorar arquivos gerados pelo PyInstaller
+build/
+dist/
+*.spec
+
+# Ignorar arquivos de dados JSON
 *.json
+
+# Ignorar arquivo fonte Python
+MatriculArthBeta.py

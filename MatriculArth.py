@@ -4,12 +4,9 @@ import subprocess
 import sys
 import time
 from tkinter import ttk
-
 import json
 
-
 matricula = {}
-
 verify = False
 
 
@@ -76,10 +73,11 @@ def iniciar_bot():
     matricula = matricula_entry.get()
     data = data_entry.get()
     horario = horario_entry.get().upper()
+    cpf = cpf_entry.get()
     if verify:
         root.destroy()
         print("Aguarde...")
-        subprocess.run(["python", "settings.py", matricula, email, senha, professor, materia, data, horario])
+        subprocess.run(["python", "settings.py", matricula, email, senha, professor, materia, data, horario, cpf])
 
 def carregar_dados():
     usuarios = {}
@@ -110,6 +108,7 @@ def selecionar_usuario(event):
             email_entry.delete(0, tk.END)
             data_entry.delete(0, tk.END)
             cpf_entry.delete(0, tk.END)
+            senha_entry.delete(0, tk.END)
             matricula_entry.insert(0, usuario.get("matricula", ""))
             email_entry.insert(0, usuario.get("email", ""))
             senha_entry.insert(0, usuario.get("senha", ""))
@@ -126,6 +125,7 @@ def selecionar_materia(event):
         if materia:
             professor_entry.delete(0, tk.END)
             horario_entry.delete(0, tk.END)
+            materia_entry.delete(0, tk.END)
             professor_entry.insert(0, materia.get("professor", ""))
             materia_entry.insert(0, materia.get("codigo materia", ""))
             horario_entry.insert(0, materia.get("horario", ""))
