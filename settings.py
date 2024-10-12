@@ -4,13 +4,9 @@ from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.common.by import By
 from selenium.webdriver.common.alert import Alert
 from selenium.webdriver.chrome.options import Options
-
-import os
-
-import time
-import winsound
-import win32gui
+import subprocess
 import sys
+import time
 
 print("Aguarde...")
 
@@ -25,13 +21,40 @@ cpf = sys.argv[8]
 
 global_time = time.time()
 
-print({ matricula, email, senha_usuario, professor, materia, data, horario })
-driver = webdriver.Edge()
+print({matricula, email, senha_usuario, professor, materia, data, horario})
 
-def alarm():
-    duration = 2000  # milliseconds
-    freq = 1500  # Hz
-    winsound.Beep(freq, duration)
+# Função para obter a versão do Chrome instalada
+def get_chrome_version():
+    try:
+        output = subprocess.check_output(['google-chrome', '--version']).decode('utf-8')
+        version = output.strip().split(' ')[-1]
+        return version
+    except Exception as e:
+        print(f"Erro ao obter a versão do Chrome: {e}")
+        return None
+
+chrome_version = get_chrome_version()
+if not chrome_version:
+    print("Não foi possível determinar a versão do Chrome instalada.")
+    sys.exit(1)
+
+print(f"Versão do Chrome instalada: {chrome_version}")
+
+# Extrair a versão principal (major version)
+chrome_major_version = chrome_version.split('.')[0]
+
+# Configurar as opções do Chrome
+chrome_options = Options()
+chrome_options.add_argument('--no-sandbox')
+chrome_options.add_argument('--disable-dev-shm-usage')
+# chrome_options.add_argument('--headless')  # Descomente se desejar executar sem interface gráfica
+chrome_options.add_argument('--window-size=1920,1080')
+
+# Inicializar o driver do Chrome com a versão correta
+driver = webdriver.Chrome(
+    service=Service(ChromeDriverManager(driver_version=chrome_major_version).install()),
+    options=chrome_options
+)
 
 navegador = driver
 
@@ -68,14 +91,14 @@ def search():
     search.click()
 
 def found():
-    if(navegador.find_element(By.XPATH, '//td[text()="{}"]'.format(professor))):
+    try:
         content = navegador.find_element(By.XPATH, '//td[text()="{}"]'.format(professor))
         contentFather = content.find_element(By.XPATH, "..")
         selecionar_turma = contentFather.find_element(By.XPATH, ".//img[@title='Selecionar turma']")
         selecionar_turma.click()
-        alarm()
         return True
-    return False
+    except:
+        return False
 
 def preenche_credenciais():
     try:
@@ -102,8 +125,11 @@ def preenche_credenciais():
 def confirm():
     confirmar = navegador.find_element(By.XPATH, ".//input[@value='Confirmar Matrícula']")
     confirmar.click()
-    alert = Alert(navegador)
-    alert.accept()
+    try:
+        alert = Alert(navegador)
+        alert.accept()
+    except:
+        pass
 
 def logout():
     sair = navegador.find_element(By.CLASS_NAME, "sair-sistema")
@@ -124,7 +150,7 @@ while True:
         if 'autenticacao' in navegador.current_url:
             login()
 
-        if ('extraordinaria' in navegador.current_url) == False:
+        if 'extraordinaria' not in navegador.current_url:
             path_extraordinaria()
 
         search()
@@ -132,34 +158,19 @@ while True:
         if found():
             break
 
-    except:
-        print("Nenhum resultado encontrado!")
+    except Exception as e:
+        print(f"Nenhum resultado encontrado! Erro: {e}")
 
     time.sleep(5)
-
-# while True:
-#     try:
-#         # dataNascimento = navegador.find_element(By.NAME, "j_id_jsp_334536566_1:Data")
-#         # input_cpf = navegador.find_element(By.NAME, "j_id_jsp_334536566_1:cpf")
-#         obrigatorio = navegador.find_elements(By.CLASS_NAME, "obrigatorio")
-#         if len(obrigatorio) == 1:
-#             senha = navegador.find_element(By.NAME, "j_id_jsp_334536566_1:senha")
-#             senha.click()
-#             senha.clear()
-#             # preencher senha
-#             senha.send_keys(senha_usuario)
-#             break
-#         else:
-#             navegador.refresh()
-#     except:
-#         navegador.refresh()   
-#     time.sleep(2)
 
 preenche_credenciais()
 
 while True:
     try:
         confirm()
+        print("Matrícula confirmada com sucesso!")
         navegador.quit()
-    except:
-        print("erro")
+        break
+    except Exception as e:
+        print(f"Erro ao confirmar matrícula: {e}")
+        time.sleep(2)

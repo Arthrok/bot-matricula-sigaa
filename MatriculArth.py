@@ -80,7 +80,7 @@ def iniciar_bot():
     if verify:
         root.destroy()
         print("Aguarde...")
-        subprocess.run(["python", "settings.py", matricula, email, senha, professor, materia, data, horario, cpf])
+        subprocess.run(["python3", "settings.py", matricula, email, senha, professor, materia, data, horario, cpf])
 
 def carregar_dados():
     usuarios = {}

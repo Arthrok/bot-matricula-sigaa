@@ -1,4 +1,3 @@
-selenium==3.141.0
+selenium==4.25.0
 webdriver-manager==3.5.1
-pywin32==301
 tk==0.1.0

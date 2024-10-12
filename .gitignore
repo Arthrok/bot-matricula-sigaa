@@ -8,3 +8,5 @@ dist/
 
 # Ignorar arquivo fonte Python
 MatriculArthBeta.py
+
+*.deb
