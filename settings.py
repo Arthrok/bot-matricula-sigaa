@@ -1,15 +1,8 @@
 from selenium import webdriver
-from webdriver_manager.chrome import ChromeDriverManager
-from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.common.by import By
 from selenium.webdriver.common.alert import Alert
-from selenium.webdriver.chrome.options import Options
-
-import os
-
 import time
 import winsound
-import win32gui
 import sys
 
 print("Aguarde...")
@@ -136,24 +129,6 @@ while True:
         print("Nenhum resultado encontrado!")
 
     time.sleep(5)
-
-# while True:
-#     try:
-#         # dataNascimento = navegador.find_element(By.NAME, "j_id_jsp_334536566_1:Data")
-#         # input_cpf = navegador.find_element(By.NAME, "j_id_jsp_334536566_1:cpf")
-#         obrigatorio = navegador.find_elements(By.CLASS_NAME, "obrigatorio")
-#         if len(obrigatorio) == 1:
-#             senha = navegador.find_element(By.NAME, "j_id_jsp_334536566_1:senha")
-#             senha.click()
-#             senha.clear()
-#             # preencher senha
-#             senha.send_keys(senha_usuario)
-#             break
-#         else:
-#             navegador.refresh()
-#     except:
-#         navegador.refresh()   
-#     time.sleep(2)
 
 preenche_credenciais()
 
